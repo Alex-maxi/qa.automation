@@ -1,0 +1,12 @@
+    websim.StartCapturing();
+    mobile.init();
+    mobile.launchApp();
+
+
+    websim.StartCapturing();
+    mobile.init();
+    mobile.launchApp();
+        
+    websim.StartCapturing();
+    mobile.init();
+    mobile.launchApp();
