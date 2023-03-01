@@ -2,6 +2,14 @@ ldsnfkdkdsfgkbfkgbsdkfgbkdbgksdgksbkfgbsdkfgbkbdkbdfbxbvm bxksbdkbksdbfc,sbjsb k
 websim.StartCapturing(); // do not delete this code
     mobile.init();  // do not delete this code
     mobile.launchApp(); // do not delete this code
+
+    websim.StartCapturing(); // do not delete this code
+    mobile.init();  // do not delete this code
+    mobile.launchApp(); // do not delete this code
+
+    websim.StartCapturing(); // do not delete this code
+    mobile.init();  // do not delete this code
+    mobile.launchApp(); // do not delete this code
 	
 	git branch [--color[=<when>] | --no-color] [--show-current]
         [-v [--abbrev=<n> | --no-abbrev]]
