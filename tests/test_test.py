@@ -1,21 +1,16 @@
-class User:
+import pytest
+from src.application.utitapp.app import *
 
-    def __init__(self, age) -> None:
-        self.age = age
 
-        def remove(self):
-            # database interaction
-            self.page = None
-
-def test_test():
-    assert true
-    
-def test_test():
-    assert 1 == 1   
-
-def test_user_age_is_42():
-    user = User(42)
-
+def test_user_age_is_43(user):
     assert user.age == 43
 
-    user.remove()
+
+def test_sum():
+    assert add_numbers(4, 5) == 9
+
+
+def test_revarray():
+    myarray = [9,8,7,6,5,4,3,2,1]
+    assertarray = [1,2,3,4,5,6,7,8,9]
+    assert revarray(myarray) == assertarray
