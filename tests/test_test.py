@@ -2,8 +2,8 @@ import pytest
 from src.application.utitapp.app import *
 
 
-def test_user_age_is_43(user):
-    assert user.age == 43
+def test_user_age_and_name_are_43_Alex(user):
+    assert user.age == 43 and user.name == "Alex"
 
 
 def test_sum():

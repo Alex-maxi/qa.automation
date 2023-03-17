@@ -6,7 +6,7 @@ from src.data.models.users import User
 def user():
     #before test
     print("Create user")
-    user = User(43)
+    user = User(43, "Alex")
 
     #pass user object to test
     yield user
