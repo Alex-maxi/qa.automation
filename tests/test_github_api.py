@@ -4,6 +4,7 @@ from src.application.api.parameters import Parameters
 from src.application.api.github_api_client import GitHubApiClient as api
 
 
+@pytest.mark.api
 def test_search_repo_per_page_param_min():
     parameters = (Parameters()
                   .set_q('qa')
@@ -14,6 +15,7 @@ def test_search_repo_per_page_param_min():
     assert body.status_code == 200 and len(json_body["items"]) == 1
 
 
+@pytest.mark.api
 def test_search_repo_per_page_param_max():
     parameters = (Parameters()
                   .set_q('qa')
@@ -24,6 +26,7 @@ def test_search_repo_per_page_param_max():
     assert body.status_code == 200 and len(json_body["items"]) == 100
 
 
+@pytest.mark.api
 def test_search_repo_per_page_param_sort_order():
     parameters_asc = (Parameters()
                       .set_q('sokolov+language:python')
@@ -40,6 +43,7 @@ def test_search_repo_per_page_param_sort_order():
     assert body_asc["items"] == body_desc["items"][::-1]
 
 
+@pytest.mark.api
 def test_search_repo_no_such_repo():
     repo_name = text_generator(30)
     parameters = Parameters().set_q(repo_name).build()
