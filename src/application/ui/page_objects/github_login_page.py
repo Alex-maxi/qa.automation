@@ -1,4 +1,4 @@
-from src.application.ui.page_objects.base_page import BasePage
+from src.application.ui.page_objects.github_base_page import BasePage
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 

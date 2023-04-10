@@ -1,13 +1,13 @@
 
 import pytest
-from src.application.ui.page_objects.login_page import LoginPage
+from src.application.ui.page_objects.github_login_page import LoginPage
 from src.config.config import config
 
 base_url = config.get('BASE_URL_UI')
 
 
 @pytest.mark.web_test
-@pytest.mark.negative
+@pytest.mark.negative_test
 @pytest.mark.parametrize("username, password", [("qa", "qa"), ("12345", "12345"), (" ", " "), ("qwerty@gmail", "pass"), ("!@#$%^&*()", "!@#$%^&*()")])
 def test_git_login_page_negative(driver, username, password):
     profile_page = LoginPage(driver, f'{base_url}/login')
@@ -18,5 +18,3 @@ def test_git_login_page_negative(driver, username, password):
                    .press_sign_in_button()
                    .assertion_fail_check())
     assert login_alert == True
-
-
