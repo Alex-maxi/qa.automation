@@ -1,4 +1,5 @@
 {
-    "BASE_URL_API": "DEV_EXAMPLE2",
-    "BASE_URL_UI": "DEV_EXAMPLE2"
+    "BASE_URL_API": "https://api.github.com",
+    "BASE_URL_UI": "https://github.com",
+    "TEST_DATA": "src/data/test_data.csv"
 }

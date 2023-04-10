@@ -1,7 +1,11 @@
-def add_numbers(num1, num2):
-    sum = num1 + num2
-    return sum
+class Apps:
 
-def revarray(arr):
-    return arr[::-1]
+    def revarray(self, arr):
+        return arr[::-1]
+    
+    def get_sum_of_digits(self, num):
+        sum = 0
+        for digit in str(num):
+            sum += int(digit)
+        return sum
 

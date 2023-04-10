@@ -14,7 +14,7 @@ class Config:
         if target is None:
             target = Config.default_env
 
-        json_path = f"src/config/env_configs/{target}.json"
+        json_path = f"src/config/env_config/{target}.json"
 
         # Hierarhy of providers
         self.providers = [
@@ -24,10 +24,11 @@ class Config:
 
         self.register("BASE_URL_API")
         self.register("BASE_URL_UI")
-
+        self.register("TEST_DATA")
+        
     def register(self, name):
         """
-        Register name of the key which is used 
+        Register name of the key which is used
         in tests
         """
 
