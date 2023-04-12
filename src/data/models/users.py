@@ -43,7 +43,6 @@ class User:
         return self
     
     def remove(self):
-        # database interaction
         self.set_age(None)
         self.set_name(None)
         self.set_lastname(None)

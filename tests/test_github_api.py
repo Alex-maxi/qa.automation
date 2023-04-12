@@ -1,3 +1,4 @@
+
 import pytest
 from src.libraries.helpers import text_generator
 from src.application.api.parameters import Parameters
@@ -50,3 +51,4 @@ def test_search_repo_no_such_repo():
     body = api().search_repo(parameters)
     body_json = body.json()
     assert body.status_code == 200 and body_json["total_count"] == 0
+
