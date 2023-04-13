@@ -52,3 +52,28 @@ def test_search_repo_no_such_repo():
     body_json = body.json()
     assert body.status_code == 200 and body_json["total_count"] == 0
 
+
+
+
+@pytest.mark.create
+def test_github_create_repo():
+    from data_auth import TOKEN
+    import requests
+    url = "https://api.github.com/user/repos"
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "Authorization": f"Bearer {TOKEN}",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+    data = {
+        "name": "Hello-World",
+        "description": "This is your first repo!",
+        "homepage": "https://github.com",
+        "private": False,
+        "is_template": True,
+    }
+    response = requests.post(url, headers=headers, json=data)
+    print(response.status_code)
+    print(response.json())
+    assert response.status_code == 201
+

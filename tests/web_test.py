@@ -34,7 +34,7 @@ def test_git_login_page_forgot_password_link(driver):
 
 @pytest.mark.web_test
 @pytest.mark.positive_test
-def test_git_login_page_forgot_password_link(driver):
+def test_git_login_page_check_title(driver):
     login_page = LoginPage(driver)
     login_page._open()
     assert login_page.title_check_text() == "Sign in to GitHub"
