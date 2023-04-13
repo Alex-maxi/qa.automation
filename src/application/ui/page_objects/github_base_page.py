@@ -32,6 +32,10 @@ class BasePage:
             return self._find(locator).is_displayed()
         except NoSuchElementException:
             return False
+        
+    def _get_text(self, locator: tuple, timeout: int = 10) -> str:
+        self._wait_until_element_is_visible(locator, timeout)
+        return self._find(locator).text
 
     
 

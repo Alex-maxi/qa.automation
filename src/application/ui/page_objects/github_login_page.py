@@ -13,6 +13,7 @@ class LoginPageLocators:
     INCORRECT_USERNAME_OR_PASS_ALERT = (By.CSS_SELECTOR, "div[role='alert']")
     TO_MUCH_FAILED_LOGIN = (By.CSS_SELECTOR, "div#login > p")
     PASSWORD_RESET_LINK = (By.CSS_SELECTOR, "[href='\/password_reset']")
+    TITLE_TEXT = (By.CSS_SELECTOR, "h1")
 
 
 class LoginPage(BasePage):
@@ -43,3 +44,7 @@ class LoginPage(BasePage):
     def forgot_password_link_check(self):
         element = super()._is_displayed(LoginPageLocators.PASSWORD_RESET_LINK)
         return element
+
+    def title_check_text(self):
+        text = super()._get_text(LoginPageLocators.TITLE_TEXT)
+        return text
