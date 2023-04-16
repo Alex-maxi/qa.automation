@@ -18,33 +18,41 @@ class LoginPageLocators:
 
 class LoginPage(BasePage):
 
-    @property
-    def _url(self):
-        return f'{base_url}/login'
+    URL = "/login"
 
-    def _open(self):
-        super()._open(self._url)
+    def go_to(self):
+        self._driver.get(base_url + LoginPage.URL)
+
+    def go_to_sign_up_page(self):
+        self._driver.get(base_url + LoginPage.URL)
+        pass
 
     def enter_user_name(self, input_data: str):
-        super()._type(LoginPageLocators.USERNAME_INPUT, input_data)
+        self.type(LoginPageLocators.USERNAME_INPUT, input_data)
         return self
 
     def enter_password(self, input_data: str):
-        super()._type(LoginPageLocators.PASSWORD_INPUT, input_data)
+        self.type(LoginPageLocators.PASSWORD_INPUT, input_data)
         return self
 
     def press_sign_in_button(self):
-        super()._click(LoginPageLocators.SIGN_IN_BUTTON)
+        self.click(LoginPageLocators.SIGN_IN_BUTTON)
+        return self
+    
+    def try_sign_in(self, name_data: str, passwodr_data: str ):
+        self.enter_user_name(name_data)
+        self.enter_password(passwodr_data)
+        self.press_sign_in_button()
         return self
 
-    def assertion_fail_check(self):
-        element = super()._is_displayed(LoginPageLocators.INCORRECT_USERNAME_OR_PASS_ALERT)
+    def check_fail_login_alert(self) -> bool:
+        element = self.is_displayed(LoginPageLocators.INCORRECT_USERNAME_OR_PASS_ALERT)
         return element
     
-    def forgot_password_link_check(self):
-        element = super()._is_displayed(LoginPageLocators.PASSWORD_RESET_LINK)
+    def check_forgot_password_link(self) -> bool:
+        element = self.is_displayed(LoginPageLocators.PASSWORD_RESET_LINK)
         return element
 
-    def title_check_text(self):
-        text = super()._get_text(LoginPageLocators.TITLE_TEXT)
+    def get_title_text(self) -> str:
+        text = self.get_text(LoginPageLocators.TITLE_TEXT)
         return text
