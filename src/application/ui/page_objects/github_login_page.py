@@ -1,8 +1,6 @@
-from src.config.config import config
 from src.application.ui.page_objects.github_base_page import BasePage
 from selenium.webdriver.common.by import By
 
-base_url = config.get('BASE_URL_UI')
 
 
 class LoginPageLocators:
@@ -21,10 +19,10 @@ class LoginPage(BasePage):
     URL = "/login"
 
     def go_to(self):
-        self._driver.get(base_url + LoginPage.URL)
+        self.driver.get(self.base_url + LoginPage.URL)
 
     def go_to_sign_up_page(self):
-        self._driver.get(base_url + LoginPage.URL)
+        self.driver.get(self.base_url + LoginPage.URL)
         pass
 
     def enter_user_name(self, input_data: str):

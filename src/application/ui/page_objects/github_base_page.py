@@ -3,23 +3,23 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait as Wait
 from selenium.common.exceptions import NoSuchElementException
-from src.config.config import config
 
 
 class BasePage:
 
-    def __init__(self, driver: WebDriver):
-        self._driver = driver
+    def __init__(self, driver: WebDriver, base_url) -> None:
+        self.driver = driver
+        self.base_url = base_url
 
     def find(self, locator: tuple) -> WebElement:
-        return self._driver.find_element(*locator)
+        return self.driver.find_element(*locator)
 
     def type(self, locator: tuple, text: str, timeout: int = 10):
         self.wait_until_element_is_visible(locator, timeout)
         self.find(locator).send_keys(text)
 
     def wait_until_element_is_visible(self, locator: tuple, timeout: int = 10):
-        return Wait(self._driver, timeout).until(EC.visibility_of_element_located(locator))
+        return Wait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
         
     def click(self, locator: tuple, timeout: int = 10):
         self.wait_until_element_is_visible(locator, timeout)
