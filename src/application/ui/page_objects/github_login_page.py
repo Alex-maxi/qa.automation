@@ -10,9 +10,13 @@ class LoginPageLocators:
     SIGN_IN_BUTTON = (By.CSS_SELECTOR, 'input[type="submit"]')
     INCORRECT_USERNAME_OR_PASS_ALERT = (By.CSS_SELECTOR, "div[role='alert']")
     TO_MUCH_FAILED_LOGIN = (By.CSS_SELECTOR, "div#login > p")
-    PASSWORD_RESET_LINK = (By.CSS_SELECTOR, "[href='\/password_reset']")
-    TITLE_TEXT = (By.CSS_SELECTOR, "h1")
-
+    PASSWORD_RESET_LINK = (By.LINK_TEXT, "Forgot password?")
+    CREATE_AN_ACCOUNT = (By.LINK_TEXT, "Create an account")
+    TERMS = (By.LINK_TEXT, "Terms")
+    PRIVACY = (By.LINK_TEXT, "Privacy")
+    SECURITY = (By.LINK_TEXT, "Security")
+    CONTACT_GITHUB = (By.LINK_TEXT, "Contact GitHub")
+    
 
 class LoginPage(BasePage):
 
@@ -20,10 +24,37 @@ class LoginPage(BasePage):
 
     def go_to(self):
         self.driver.get(self.base_url + LoginPage.URL)
+        return self
 
-    def go_to_sign_up_page(self):
-        self.driver.get(self.base_url + LoginPage.URL)
-        pass
+    def go_to_signup_page(self):
+        self.click(LoginPageLocators.CREATE_AN_ACCOUNT)
+        self.wait_until_url_changes(self.base_url + self.URL)
+        return self
+    
+    def go_to_password_reset_page(self):
+        self.click(LoginPageLocators.PASSWORD_RESET_LINK)
+        self.wait_until_url_changes(self.base_url + self.URL)
+        return self
+    
+    def go_to_terms_page(self):
+        self.click(LoginPageLocators.TERMS)
+        self.wait_until_url_changes(self.base_url + self.URL)
+        return self
+    
+    def go_to_privacy_page(self):
+        self.click(LoginPageLocators.PRIVACY)
+        self.wait_until_url_changes(self.base_url + self.URL)
+        return self
+    
+    def go_to_security_page(self):
+        self.click(LoginPageLocators.SECURITY)
+        self.wait_until_url_changes(self.base_url + self.URL)
+        return self
+    
+    def go_to_github_support_page(self):
+        self.click(LoginPageLocators.CONTACT_GITHUB)
+        self.wait_until_url_changes(self.base_url + self.URL)
+        return self
 
     def enter_user_name(self, input_data: str):
         self.type(LoginPageLocators.USERNAME_INPUT, input_data)
@@ -51,6 +82,8 @@ class LoginPage(BasePage):
         element = self.is_displayed(LoginPageLocators.PASSWORD_RESET_LINK)
         return element
 
-    def get_title_text(self) -> str:
-        text = self.get_text(LoginPageLocators.TITLE_TEXT)
+    def get_login_page_title_text(self) -> str:
+        text = self.get_title()
         return text
+    
+    
