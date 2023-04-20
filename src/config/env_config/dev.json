@@ -1,5 +1,7 @@
 {
     "BASE_URL_API": "https://api.github.com",
     "BASE_URL_UI": "https://github.com",
-    "TEST_DATA": "src/data/test_data.csv"
+    "TEST_DATA": "src/data/test_data.csv",
+    "BROWSER": "ff",
+    "DEBUG_MODE": true
 }

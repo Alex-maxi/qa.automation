@@ -2,6 +2,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from src.providers.service.browsers.browsers_provider import BrowsersProvider
 from src.application.api.github_api_client import GitHubApiClient
 from src.application.ui.github_ui_app import GitHubUI
 from src.config.config import config
@@ -35,11 +36,11 @@ def github_api_client():
 @pytest.fixture(scope="session")
 def GitHub_UI_App():
     # before test
-    driver_service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=driver_service)
-    driver.maximize_window()
 
-    ui_app = GitHubUI(driver)
+    browser = config.get("BROWSER")
+    browser = BrowsersProvider.get_driver(browser)
+
+    ui_app = GitHubUI(browser)
 
     # pass driver(WebDriver) object to test
     yield ui_app

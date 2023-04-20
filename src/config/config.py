@@ -25,6 +25,8 @@ class Config:
         self.register("BASE_URL_API")
         self.register("BASE_URL_UI")
         self.register("TEST_DATA")
+        self.register("BROWSER")
+        self.register("DEBUG_MODE")
         
     def register(self, name):
         """

@@ -1,4 +1,7 @@
 {
-    "BASE_URL_API": "QA_EXAMPLE_API",
-    "BASE_URL_UI": "QA_EXAMPLE_UI"
+    "BASE_URL_API": "https://api.github.com",
+    "BASE_URL_UI": "https://github.com",
+    "TEST_DATA": "src/data/test_data.csv",
+    "BROWSER": "ff",
+    "DEBUG_MODE": true
 }
