@@ -45,7 +45,7 @@ class BasePage:
         get_url = self.driver.current_url
         return get_url
     
-    def wait_until_url_changes(self, url: str, timeout: int = 10):
+    def wait_until_url_changes(self, url: str, timeout: int = 15):
         return Wait(self.driver, timeout).until(EC.url_changes(url))
 
     

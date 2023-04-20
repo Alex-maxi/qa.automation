@@ -16,4 +16,4 @@ class GitHubUI:
         return self
 
     def close(self):
-        self.driver.quit()
+        self.driver.close()

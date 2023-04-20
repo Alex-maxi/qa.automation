@@ -10,11 +10,10 @@ class EdgeBrowser:
 
     @staticmethod
     def get_driver():
-        user_agent = ""
         options = Options()
         options.page_load_strategy = 'normal'
         options.add_argument("start-maximized")
-        options.add_argument("inprivate")
+        # options.add_argument("inprivate")
 
         if config.get("DEBUG_MODE") is False:
             options.add_argument('--headless')
