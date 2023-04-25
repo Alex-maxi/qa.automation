@@ -38,6 +38,7 @@ class BasePage:
     def click(self, locator: tuple, timeout: int = None):
         if timeout is None:
             timeout = self.base_timeout
+
         self.wait_until_element_is_visible(locator, timeout)
         self.find(locator).click()
 
