@@ -3,7 +3,7 @@ from selenium.webdriver.edge.service import Service as EdgeService
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.edge.options import Options
 
-from src.config.config import config
+from src.config.config import CONFIG
 
 
 class EdgeBrowser:
@@ -15,7 +15,7 @@ class EdgeBrowser:
         options.add_argument("start-maximized")
         # options.add_argument("inprivate")
 
-        if config.get("DEBUG_MODE") is False:
+        if CONFIG.get("DEBUG_MODE") is False:
             options.add_argument('--headless')
             options.add_argument('--disable-gpu')
             

@@ -2,12 +2,11 @@ import pytest
 from src.application.utitapp.app import Apps
 from src.application.api.github_api_client import GitHubApiClient
 from src.libraries.helpers import read_data_from_csv
-from src.config.config import config
+from src.config.config import CONFIG
 from src.data.models.users import User
 
 
-url = config.get('BASE_URL_API')
-input_data = config.get("TEST_DATA")
+input_data = CONFIG.get("TEST_DATA")
 sum_test_data = read_data_from_csv(input_data)
 apps = Apps()
 api = GitHubApiClient()

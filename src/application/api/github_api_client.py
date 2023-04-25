@@ -1,5 +1,5 @@
 import requests
-from src.config.config import config
+from src.config.config import CONFIG
 
 
 class GitHubApiClient:
@@ -23,4 +23,4 @@ class GitHubApiClient:
         print("Do logout for")
 
     def _form_url(self, url):
-        return config.get("BASE_URL_API") + url
+        return CONFIG.get("BASE_URL_API") + url

@@ -1,5 +1,5 @@
 import os
-
+from src.config.providers.config_from_defults_provider import ConfigFromDefaultsProvider
 from src.config.providers.config_from_env_provider import ConfigFromEnvProvider
 from src.config.providers.config_from_json_provider import ConfigFromSimpleJsonProvider
 
@@ -20,6 +20,11 @@ class Config:
         self.providers = [
             ConfigFromSimpleJsonProvider(json_path),
             ConfigFromEnvProvider(),
+            ConfigFromDefaultsProvider({
+                "DEBUG_MODE": True,
+                "BROWSER": 'chrome',
+                "UI_TIMEOUTS": 30,
+            })
             ]
 
         self.register("BASE_URL_API")
@@ -27,6 +32,7 @@ class Config:
         self.register("TEST_DATA")
         self.register("BROWSER")
         self.register("DEBUG_MODE")
+        self.register("UI_TIMEOUTS")
         
     def register(self, name):
         """
@@ -60,4 +66,4 @@ class Config:
 
 
 # python way singleton
-config = Config()
+CONFIG = Config()

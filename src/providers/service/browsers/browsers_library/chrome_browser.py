@@ -3,7 +3,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
-from src.config.config import config
+from src.config.config import CONFIG
 
 
 class ChromeBrowser:
@@ -19,7 +19,7 @@ class ChromeBrowser:
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_argument("disable-blink-features=AutomationControlled")
 
-        if config.get("DEBUG_MODE") is False:
+        if CONFIG.get("DEBUG_MODE") is False:
             options.add_argument('--headless')
             options.add_argument('--disable-gpu')
 

@@ -1,11 +1,8 @@
 import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from src.providers.service.browsers.browsers_provider import BrowsersProvider
 from src.application.api.github_api_client import GitHubApiClient
 from src.application.ui.github_ui_app import GitHubUI
-from src.config.config import config
+from src.config.config import CONFIG
 
 from src.data.models.users import User
 
@@ -26,7 +23,7 @@ def user():
 @pytest.fixture
 def github_api_client():
     github_api_client = GitHubApiClient()
-    github_api_client.login(config.get("USERNAME"), config.get("PASSWORD"))
+    github_api_client.login(CONFIG.get("USERNAME"), CONFIG.get("PASSWORD"))
 
     yield github_api_client
 
@@ -37,7 +34,7 @@ def github_api_client():
 def GitHub_UI_App():
     # before test
 
-    browser = config.get("BROWSER")
+    browser = CONFIG.get("BROWSER")
     browser = BrowsersProvider.get_driver(browser)
 
     ui_app = GitHubUI(browser)
