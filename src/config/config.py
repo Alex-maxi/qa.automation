@@ -23,7 +23,7 @@ class Config:
             ConfigFromSimpleJsonProvider(json_path_auth),
             ConfigFromEnvProvider(),
             ConfigFromDefaultsProvider({
-                "DEBUG_MODE": True,
+                "DEBUG_MODE": False,
                 "BROWSER": 'chrome',
                 "UI_TIMEOUTS": 30,
             })
