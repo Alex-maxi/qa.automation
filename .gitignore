@@ -3,4 +3,4 @@ __pycache__/
 reports/
 .vscode/
 geckodriver.log
-data_auth.py
+data_auth.json

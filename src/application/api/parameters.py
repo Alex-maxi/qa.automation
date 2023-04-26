@@ -51,14 +51,14 @@ class Parameters:
         Returns: (dict): Building object of parameters
         """
         params_dict = {}
+        if self._q != "":
+            params_dict["q"] = self._q
         if self._sort != None:
             params_dict["sort"] = self._sort
         if self._order != None:
             params_dict["order"] = self._order
         if self._page != None:
             params_dict["page"] = self._page
-        if self._q != "":
-            params_dict["q"] = self._q
         if self._per_page != None:
             params_dict["per_page"] = self._per_page
         return params_dict

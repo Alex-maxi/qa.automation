@@ -20,10 +20,10 @@ def user():
     print("Remove user")
     user.remove()
 
-@pytest.fixture
-def github_api_client():
+@pytest.fixture(scope="session")
+def GitHub_Api_Client():
     github_api_client = GitHubApiClient()
-    github_api_client.login(CONFIG.get("USERNAME"), CONFIG.get("PASSWORD"))
+    github_api_client.login()
 
     yield github_api_client
 

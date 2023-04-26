@@ -15,10 +15,12 @@ class Config:
             target = Config.default_env
 
         json_path = f"src/config/env_config/{target}.json"
+        json_path_auth = f"src/config/env_config/data_auth.json"
 
         # Hierarhy of providers
         self.providers = [
             ConfigFromSimpleJsonProvider(json_path),
+            ConfigFromSimpleJsonProvider(json_path_auth),
             ConfigFromEnvProvider(),
             ConfigFromDefaultsProvider({
                 "DEBUG_MODE": True,
@@ -33,6 +35,7 @@ class Config:
         self.register("BROWSER")
         self.register("DEBUG_MODE")
         self.register("UI_TIMEOUTS")
+        self.register("GIT_HUB_TOKEN")
         
     def register(self, name):
         """

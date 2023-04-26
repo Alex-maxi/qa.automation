@@ -1,6 +1,4 @@
-import time
 import pytest
-from src.application.ui.page_objects.github_login_page import LoginPage
 
 
 @pytest.mark.web_test
