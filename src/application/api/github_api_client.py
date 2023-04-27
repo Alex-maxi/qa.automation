@@ -5,8 +5,6 @@ from src.libraries.helpers import text_generator
 
 class GitHubApiClient:
 
-    TEST_REPO_NAME = 'API_Test_Repo'
-
     def __init__(self) -> None:
         self.token = None
         self.owner = None
