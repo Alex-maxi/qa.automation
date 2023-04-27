@@ -20,6 +20,7 @@ def test_git_login_page_negative(GitHub_UI_App, username, password):
     login_alert = login_page.check_fail_login_alert()
     assert login_alert, "Login alert not displayed"
 
+
 @pytest.mark.web_test
 @pytest.mark.positive_test
 def test_git_login_page_forgot_password_link(GitHub_UI_App):
@@ -27,12 +28,14 @@ def test_git_login_page_forgot_password_link(GitHub_UI_App):
     login_page.go_to()
     assert login_page.check_forgot_password_link(), "Forgot password link not displayed."
 
+
 @pytest.mark.web_test
 @pytest.mark.positive_test
 def test_git_login_page_check_title(GitHub_UI_App):
     login_page = GitHub_UI_App.LoginPage
     login_page.go_to()
     assert login_page.get_login_page_title_text() == "Sign in to GitHub · GitHub"
+
 
 @pytest.mark.web_test
 @pytest.mark.positive_test
@@ -44,6 +47,7 @@ def test_link_signup_page(GitHub_UI_App):
     assert (signup_page_url == "https://github.com/signup?source=login" and
             signup_page_title == "Join GitHub · GitHub")
 
+
 @pytest.mark.web_test
 @pytest.mark.positive_test
 def test_link_password_reset_page(GitHub_UI_App):
@@ -53,6 +57,7 @@ def test_link_password_reset_page(GitHub_UI_App):
     reset_page_url = login_page.get_url()
     assert (reset_page_url == "https://github.com/password_reset" and
             reset_page_title == "Forgot your password? · GitHub")
+
 
 @pytest.mark.web_test
 @pytest.mark.positive_test
@@ -75,6 +80,7 @@ def test_link_privacy_page(GitHub_UI_App):
     assert (privacy_page_url == "https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" and
             privacy_page_title == "GitHub Privacy Statement - GitHub Docs")
 
+
 @pytest.mark.web_test
 @pytest.mark.positive_test
 def test_link_security_page(GitHub_UI_App):
@@ -84,6 +90,7 @@ def test_link_security_page(GitHub_UI_App):
     security_page_url = login_page.get_url()
     assert (security_page_url == "https://github.com/security" and 
             security_page_title == "GitHub Security · GitHub")
+
 
 @pytest.mark.web_test
 @pytest.mark.positive_test
