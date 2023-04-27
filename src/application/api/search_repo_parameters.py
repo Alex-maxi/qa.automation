@@ -1,4 +1,4 @@
-class Parameters:
+class SearchRepoParameters:
 
     def __init__(self, q="", sort=None, order=None, per_page=None, page=None) -> None:
         self._sort = sort
@@ -8,7 +8,7 @@ class Parameters:
         self._per_page = per_page
 
     # Sorting params are (stats, forks, help-wanted-issues, updates)
-    def set_sort(self, sort: str) -> 'Parameters':
+    def set_sort(self, sort: str) -> 'SearchRepoParameters':
         """
         Args: sort (str): Enter sorting params. Select on of: "stats", "forks", "help-wanted-issues", "updates".
         """
@@ -16,14 +16,14 @@ class Parameters:
         return self
 
     # Order params are (desc, asc)
-    def set_order(self, order: str) -> 'Parameters':
+    def set_order(self, order: str) -> 'SearchRepoParameters':
         """
         Args: order (str): Type "desc" or "asc" for ordering.
         """
         self._order = order
         return self
 
-    def set_per_page(self, per_page: int) -> 'Parameters':
+    def set_per_page(self, per_page: int) -> 'SearchRepoParameters':
         """
         Args: page (int): Enter number of repos on page. Max value is "100".
         """
@@ -31,7 +31,7 @@ class Parameters:
         return self
 
     # Page param is number of page
-    def set_page(self, page: int) -> 'Parameters':
+    def set_page(self, page: int) -> 'SearchRepoParameters':
         """
         Args: page (int): Enter page number to show
         """
@@ -39,7 +39,7 @@ class Parameters:
         return self
 
     # "q" param query contains one ore more search keywords and qualifiers
-    def set_q(self, q: str) -> 'Parameters':
+    def set_q(self, q: str) -> 'SearchRepoParameters':
         """
         Args: q (str): Required parameter. Example: q=tetris+language:assembly
         """

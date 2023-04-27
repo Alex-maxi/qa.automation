@@ -1,6 +1,6 @@
 import pytest
 from src.libraries.helpers import text_generator
-from src.application.api.parameters import Parameters
+from src.application.api.search_repo_parameters import SearchRepoParameters as Parameters
 from src.config.config import CONFIG
 
 

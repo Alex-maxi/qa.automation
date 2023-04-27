@@ -10,6 +10,46 @@ class GitHubApiClient:
         self.owner = None
         self.repo_name = None
 
+    def get_authenticated_user(self):
+        headers = {
+            'Authorization': f'token {self.token}',
+            'Accept': 'application/vnd.github+json',
+            'X-GitHub-Api-Version': '2022-11-28'
+        }
+        response = requests.get(f'{self._form_url("/user")}', headers=headers)
+        return response
+    
+    
+    def get_list_users(self, parameters = None):
+        headers = {
+            'Authorization': f'token {self.token}',
+            'Accept': 'application/vnd.github+json',
+            'X-GitHub-Api-Version': '2022-11-28'
+        }
+        response = requests.get(f'{self._form_url("/users")}', params=parameters, headers=headers, )
+        return response
+    
+    def get_a_user(self, pathparam=None):
+        if pathparam is None:
+            pathparam = self.owner
+        headers = {
+            'Authorization': f'token {self.token}',
+            'Accept': 'application/vnd.github+json',
+            'X-GitHub-Api-Version': '2022-11-28'
+        }
+        response = requests.get(f'{self._form_url(f"/users/{pathparam}")}', headers=headers)
+        return response
+    
+
+    def get_user_contextual_info(self, parameters = None):
+        headers = {
+            'Authorization': f'token {self.token}',
+            'Accept': 'application/vnd.github+json',
+            'X-GitHub-Api-Version': '2022-11-28'
+        }
+        response = requests.get(f'{self._form_url(f"/users/{self.owner}/hovercard")}', params=parameters, headers=headers)
+        return response
+
 
     def search_repo(self, parameters):
         response = requests.get(
