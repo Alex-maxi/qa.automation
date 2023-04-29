@@ -30,7 +30,7 @@ def GitHub_Api_Client():
     github_api_client.logout()
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def GitHub_UI_App():
     # before test
 
