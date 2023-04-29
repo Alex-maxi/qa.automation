@@ -19,14 +19,15 @@ class Config:
 
         # Hierarhy of providers
         self.providers = [
-            ConfigFromSimpleJsonProvider(json_path),
-            ConfigFromSimpleJsonProvider(json_path_auth),
-            ConfigFromEnvProvider(),
             ConfigFromDefaultsProvider({
                 "DEBUG_MODE": False,
                 "BROWSER": 'chrome',
                 "UI_TIMEOUTS": 30,
-            })
+                "SELENIUM_GRID_URL": 'http://192.168.31.88:4444/wd/hub'
+            }),
+            ConfigFromSimpleJsonProvider(json_path),
+            ConfigFromSimpleJsonProvider(json_path_auth),
+            ConfigFromEnvProvider()
             ]
 
         self.register("BASE_URL_API")
@@ -36,6 +37,9 @@ class Config:
         self.register("DEBUG_MODE")
         self.register("UI_TIMEOUTS")
         self.register("GIT_HUB_TOKEN")
+        self.register("SELENIUM_GRID_URL")
+        
+
         
     def register(self, name):
         """

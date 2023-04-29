@@ -12,38 +12,38 @@ class GitHubApiClient:
 
     def get_authenticated_user(self):
         headers = {
-            'Authorization': f'token {self.token}',
+            'Authorization': f'Bearer {self.token}',
             'Accept': 'application/vnd.github+json',
             'X-GitHub-Api-Version': '2022-11-28'
         }
-        response = requests.get(f'{self._form_url("/user")}', headers=headers)
+        response = requests.get(self._form_url("/user"), headers=headers)
         return response
     
     
     def get_list_users(self, parameters = None):
         headers = {
-            'Authorization': f'token {self.token}',
+            'Authorization': f'Bearer {self.token}',
             'Accept': 'application/vnd.github+json',
             'X-GitHub-Api-Version': '2022-11-28'
         }
-        response = requests.get(f'{self._form_url("/users")}', params=parameters, headers=headers, )
+        response = requests.get(self._form_url("/users"), params=parameters, headers=headers, )
         return response
     
     def get_a_user(self, pathparam=None):
         if pathparam is None:
             pathparam = self.owner
         headers = {
-            'Authorization': f'token {self.token}',
+            'Authorization': f'Bearer {self.token}',
             'Accept': 'application/vnd.github+json',
             'X-GitHub-Api-Version': '2022-11-28'
         }
-        response = requests.get(f'{self._form_url(f"/users/{pathparam}")}', headers=headers)
+        response = requests.get(self._form_url(f"/users/{pathparam}"), headers=headers)
         return response
     
 
     def get_user_contextual_info(self, parameters = None):
         headers = {
-            'Authorization': f'token {self.token}',
+            'Authorization': f'Bearer {self.token}',
             'Accept': 'application/vnd.github+json',
             'X-GitHub-Api-Version': '2022-11-28'
         }
@@ -75,7 +75,7 @@ class GitHubApiClient:
 
     def delete_repo(self):
         url = self._form_url(f"/repos/{self.owner}/{self.repo_name}")
-        headers = {'Authorization': f'token {self.token}'}
+        headers = {'Authorization': f'Bearer {self.token}'}
         response = requests.delete(url, headers=headers)
         return response
 
@@ -87,7 +87,7 @@ class GitHubApiClient:
             'Accept': 'application/vnd.github+json',
             'X-GitHub-Api-Version': '2022-11-28'
         }
-        response = requests.get(f'{self._form_url("/user")}', headers=headers)
+        response = requests.get(self._form_url("/user"), headers=headers)
         self.owner = response.json()['login']
 
 

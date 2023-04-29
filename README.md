@@ -16,3 +16,30 @@ For running single test file execute command in terminal:
 
 For running tests using mark:
         pytest -m mark_name
+
+
+For running API test with Authorization
+Need to create file with name "data_auth.json" in "src/config/env_config" folder.
+And place in file your GitHub Authorization Token in formar:
+{
+    "GIT_HUB_TOKEN": "your_authorization token"
+}
+
+
+
+
+DOCKER RUNNING
+
+--For creating container--
+docker compose up
+--For stoping container--
+docker container stop selenium-hub
+--For remuving container--
+docker container rm selenium-hub
+
+
+--For running docker container--
+docker build . -t be-auto-apr
+docker run --volume `pwd`/reports:/test-framework/reports -e BROWSER=remote_chrome TARGET=dev be-auto-apr
+
+
