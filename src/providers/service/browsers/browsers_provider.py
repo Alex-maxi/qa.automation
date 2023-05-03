@@ -17,7 +17,7 @@ class BrowsersProvider:
         'remote_ff': RemoteFFBrowser,
         'remote_edge': RemoteEdgeBrowser
     }
-
+    @staticmethod
     def get_driver(browser_name):
         """
         browser_name -> 'chrome, ff, edge, remote_chrome, remote_ff, remote_edge 
