@@ -10,7 +10,8 @@ class SearchRepoParameters:
     # Sorting params are (stats, forks, help-wanted-issues, updates)
     def set_sort(self, sort: str) -> 'SearchRepoParameters':
         """
-        Args: sort (str): Enter sorting params. Select on of: "stats", "forks", "help-wanted-issues", "updates".
+        Args: sort (str): Enter sorting params. 
+        Select on of: "stats", "forks", "help-wanted-issues", "updates".
         """
         self._sort = sort
         return self
@@ -53,12 +54,12 @@ class SearchRepoParameters:
         params_dict = {}
         if self._q != "":
             params_dict["q"] = self._q
-        if self._sort != None:
+        if self._sort is not None:
             params_dict["sort"] = self._sort
-        if self._order != None:
+        if self._order is not None:
             params_dict["order"] = self._order
-        if self._page != None:
+        if self._page is not None:
             params_dict["page"] = self._page
-        if self._per_page != None:
+        if self._per_page is not None:
             params_dict["per_page"] = self._per_page
         return params_dict
