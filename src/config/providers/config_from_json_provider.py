@@ -11,7 +11,7 @@ class ConfigFromSimpleJsonProvider(BaseConfigKeyProvider):
         """
         :param config_path: path to the json with configuration
         """
-        with open(config_path) as json_file:
+        with open(config_path, encoding="ASCII") as json_file:
             self._config_data = json.load(json_file)
 
     def get(self, key):
@@ -23,5 +23,5 @@ class ConfigFromSimpleJsonProvider(BaseConfigKeyProvider):
 
         print('Config From Simple Json Provider')
         print(val)
-        
+
         return val

@@ -5,6 +5,14 @@ from src.config.providers.config_from_json_provider import ConfigFromSimpleJsonP
 
 
 class Config:
+    """
+    Configuration class for env. variables.
+    Raises:
+        Exception: If variable was not set
+
+    Returns:
+        dict: With variables names and values.
+    """
     default_env = "dev"
 
     def __init__(self) -> None:
@@ -15,7 +23,7 @@ class Config:
             target = Config.default_env
 
         json_path = f"src/config/env_config/{target}.json"
-        json_path_auth = f"src/config/env_config/data_auth.json"
+        json_path_auth = "src/config/env_config/data_auth.json"
 
         # Hierarhy of providers
         self.providers = [
@@ -38,9 +46,9 @@ class Config:
         self.register("UI_TIMEOUTS")
         self.register("GIT_HUB_TOKEN")
         self.register("SELENIUM_GRID_URL")
-        
 
-        
+
+
     def register(self, name):
         """
         Register name of the key which is used
@@ -56,7 +64,7 @@ class Config:
 
         # raise error if no value is found across the providers
         val = self.conf_dict.get(name)
-        if val is None:    
+        if val is None:
             raise Exception(f"{name} variable is not set in config")
 
         print(f"{name} variable is registered in config with value {val}")
@@ -66,7 +74,7 @@ class Config:
         Return existing value
         """
         val = self.conf_dict.get(name)
-        if val is None:    
+        if val is None:
             raise Exception(f"{name} variable is not set in config")
 
         return self.conf_dict.get(name)

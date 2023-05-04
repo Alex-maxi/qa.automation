@@ -43,3 +43,11 @@ docker build . -t be-auto-apr
 docker run --volume `pwd`/reports:/test-framework/reports -e BROWSER=remote_chrome TARGET=dev be-auto-apr
 
 
+
+Pylint
+
+For correct work need to do some steps:
+ - run command in terminal in project folder 'pylint --generate-rcfile > .pylintrc'
+ - in created file add:
+[MASTER]
+init-hook='import sys; sys.path.append("/path/to/root")'  path to work folder

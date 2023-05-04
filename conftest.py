@@ -1,3 +1,4 @@
+"""The `pytest` module provides a testing framework for Python"""
 import pytest
 from src.providers.service.browsers.browsers_provider import BrowsersProvider
 from src.application.api.github_api_client import GitHubApiClient
@@ -8,7 +9,10 @@ from src.data.models.users import User
 
 
 @pytest.fixture(scope="function")
-def user():
+def user_class():
+    """
+    Test fixture for User Class. Not used yet.
+    """
     # before test
     print("Create user")
     user = User(43, "Alex")
@@ -21,17 +25,24 @@ def user():
     user.remove()
 
 @pytest.fixture(scope="session")
-def GitHub_Api_Client():
-    github_api_client = GitHubApiClient()
-    github_api_client.login()
+def github_api_client():
+    """
+    Fixture which returns authorized github api client.
+    """
+    api_client = GitHubApiClient()
+    api_client.login()
 
-    yield github_api_client
+    yield api_client
 
-    github_api_client.logout()
+    api_client.logout()
 
 
 @pytest.fixture(scope="function")
-def GitHub_UI_App():
+def git_hub_ui_app():
+    """
+    Fixture which returns browser(driver) from 'BrowsersProvider' Class 
+    to UI App and then to Page Object models.
+    """
     # before test
 
     browser = CONFIG.get("BROWSER")

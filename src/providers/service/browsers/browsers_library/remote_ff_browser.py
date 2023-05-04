@@ -5,7 +5,7 @@ from src.config.config import CONFIG
 
 
 class RemoteFFBrowser:
-    
+
     @staticmethod
     def get_driver():
         options = webdriver.FirefoxOptions()
@@ -17,4 +17,3 @@ class RemoteFFBrowser:
         )
 
         return driver
-
