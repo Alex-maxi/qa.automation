@@ -4,7 +4,9 @@ from src.config.providers.base_config import BaseConfigKeyProvider
 # BaseConfigKeyProvider usage is optional
 class ConfigFromDefaultsProvider(BaseConfigKeyProvider):
     """
-    Allows configuration through the env variables.
+    Allows default configuration.
+    Args:
+        BaseConfigKeyProvider (class): Base configuration class
     """
 
     def __init__(self, props) -> None:

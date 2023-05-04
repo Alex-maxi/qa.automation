@@ -1,10 +1,11 @@
-from src.application.ui.page_objects.github_base_page import BasePage
 from selenium.webdriver.common.by import By
-
+from src.application.ui.page_objects.github_base_page import BasePage
 
 
 class LoginPageLocators:
-
+    """
+    Locators for Login Page
+    """
     USERNAME_INPUT = (By.ID, 'login_field')
     PASSWORD_INPUT = (By.ID, 'password')
     SIGN_IN_BUTTON = (By.CSS_SELECTOR, 'input[type="submit"]')
@@ -16,9 +17,17 @@ class LoginPageLocators:
     PRIVACY = (By.LINK_TEXT, "Privacy")
     SECURITY = (By.LINK_TEXT, "Security")
     CONTACT_GITHUB = (By.LINK_TEXT, "Contact GitHub")
-    
+
 
 class LoginPage(BasePage):
+    """
+    Login Page page_object model
+    Args:
+        BasePage (class): Base page with main methods
+
+    Returns:
+        methods: Methods for Login Page 
+    """
 
     URL = "/login"
 
@@ -30,27 +39,27 @@ class LoginPage(BasePage):
         self.click(LoginPageLocators.CREATE_AN_ACCOUNT)
         self.wait_until_url_changes(self.base_url + self.URL)
         return self
-    
+
     def go_to_password_reset_page(self):
         self.click(LoginPageLocators.PASSWORD_RESET_LINK)
         self.wait_until_url_changes(self.base_url + self.URL)
         return self
-    
+
     def go_to_terms_page(self):
         self.click(LoginPageLocators.TERMS)
         self.wait_until_url_changes(self.base_url + self.URL)
         return self
-    
+
     def go_to_privacy_page(self):
         self.click(LoginPageLocators.PRIVACY)
         self.wait_until_url_changes(self.base_url + self.URL)
         return self
-    
+
     def go_to_security_page(self):
         self.click(LoginPageLocators.SECURITY)
         self.wait_until_url_changes(self.base_url + self.URL)
         return self
-    
+
     def go_to_github_support_page(self):
         self.click(LoginPageLocators.CONTACT_GITHUB)
         self.wait_until_url_changes(self.base_url + self.URL)
@@ -67,7 +76,7 @@ class LoginPage(BasePage):
     def press_sign_in_button(self):
         self.click(LoginPageLocators.SIGN_IN_BUTTON)
         return self
-    
+
     def try_sign_in(self, name_data: str, passwodr_data: str ):
         self.enter_user_name(name_data)
         self.enter_password(passwodr_data)
@@ -77,7 +86,7 @@ class LoginPage(BasePage):
     def check_fail_login_alert(self) -> bool:
         element = self.is_displayed(LoginPageLocators.INCORRECT_USERNAME_OR_PASS_ALERT)
         return element
-    
+
     def check_forgot_password_link(self) -> bool:
         element = self.is_displayed(LoginPageLocators.PASSWORD_RESET_LINK)
         return element
@@ -85,5 +94,3 @@ class LoginPage(BasePage):
     def get_login_page_title_text(self) -> str:
         text = self.get_title()
         return text
-    
-    

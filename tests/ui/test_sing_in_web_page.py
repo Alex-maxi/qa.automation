@@ -18,11 +18,12 @@ def test_git_login_page_negative(git_hub_ui_app, username, password):
     """
     Negative test with incorrect credentials.
     Args:
-        git_hub_ui_app (_type_): Fixture of 'ui_app' from conftest.py.
+        git_hub_ui_app (function): Fixture which returns browser(driver) 
+        from 'BrowsersProvider' Class to UI App and then to Page Object models.
         username (_type_): parametrize data
         password (_type_): parametrize data
     """
-    login_page = git_hub_ui_app.LoginPage
+    login_page = git_hub_ui_app.login_page
     login_page.go_to()
     login_page.try_sign_in(username, password)
     login_alert = login_page.check_fail_login_alert()
@@ -36,9 +37,10 @@ def test_git_login_page_forgot_password_link(git_hub_ui_app):
     """
     Checking forgot password link
     Args:
-        git_hub_ui_app (_type_): Fixture of 'ui_app' from conftest.py.
+        git_hub_ui_app (function): Fixture which returns browser(driver) 
+        from 'BrowsersProvider' Class to UI App and then to Page Object models.
     """
-    login_page = git_hub_ui_app.LoginPage
+    login_page = git_hub_ui_app.login_page
     login_page.go_to()
 
     assert login_page.check_forgot_password_link(), "Forgot password link not displayed."
@@ -50,9 +52,10 @@ def test_git_login_page_check_title(git_hub_ui_app):
     """
     Checking title of page
     Args:
-        git_hub_ui_app (_type_): Fixture of 'ui_app' from conftest.py.
+        git_hub_ui_app (function): Fixture which returns browser(driver) 
+        from 'BrowsersProvider' Class to UI App and then to Page Object models.
     """
-    login_page = git_hub_ui_app.LoginPage
+    login_page = git_hub_ui_app.login_page
     login_page.go_to()
 
     assert login_page.get_login_page_title_text() == "Sign in to GitHub · GitHub"
@@ -64,13 +67,14 @@ def test_link_signup_page(git_hub_ui_app):
     """
     Checking link to signup page
     Args:
-        git_hub_ui_app (_type_): Fixture of 'ui_app' from conftest.py.
+        git_hub_ui_app (function): Fixture which returns browser(driver) 
+        from 'BrowsersProvider' Class to UI App and then to Page Object models.
     """
-    login_page = git_hub_ui_app.LoginPage
+    login_page = git_hub_ui_app.login_page
     login_page.go_to().go_to_signup_page()
 
     signup_page_title = login_page.get_title()
-    signup_page_url = login_page.get_url()   
+    signup_page_url = login_page.get_url()
 
     assert (signup_page_url == "https://github.com/signup?source=login" and
             signup_page_title == "Join GitHub · GitHub")
@@ -82,9 +86,10 @@ def test_link_password_reset_page(git_hub_ui_app):
     """
     Checking link to password reset page
     Args:
-        git_hub_ui_app (_type_): Fixture of 'ui_app' from conftest.py.
+        git_hub_ui_app (function): Fixture which returns browser(driver) 
+        from 'BrowsersProvider' Class to UI App and then to Page Object models.
     """
-    login_page = git_hub_ui_app.LoginPage
+    login_page = git_hub_ui_app.login_page
     login_page.go_to().go_to_password_reset_page()
 
     reset_page_title = login_page.get_title()
@@ -100,9 +105,10 @@ def test_link_terms_page(git_hub_ui_app):
     """
     Checking link to terms page
     Args:
-        git_hub_ui_app (_type_): Fixture of 'ui_app' from conftest.py.
+        git_hub_ui_app (function): Fixture which returns browser(driver) 
+        from 'BrowsersProvider' Class to UI App and then to Page Object models.
     """
-    login_page = git_hub_ui_app.LoginPage
+    login_page = git_hub_ui_app.login_page
     login_page.go_to().go_to_terms_page()
 
     terms_page_title = login_page.get_title()
@@ -118,9 +124,10 @@ def test_link_privacy_page(git_hub_ui_app):
     """
     Checking link to privacy page
     Args:
-        git_hub_ui_app (_type_): Fixture of 'ui_app' from conftest.py.
+        git_hub_ui_app (function): Fixture which returns browser(driver) 
+        from 'BrowsersProvider' Class to UI App and then to Page Object models.
     """
-    login_page = git_hub_ui_app.LoginPage
+    login_page = git_hub_ui_app.login_page
     login_page.go_to().go_to_privacy_page()
 
     privacy_page_title = login_page.get_title()
@@ -136,9 +143,10 @@ def test_link_security_page(git_hub_ui_app):
     """
     Checking link to security page
     Args:
-        git_hub_ui_app (_type_): Fixture of 'ui_app' from conftest.py.
+        git_hub_ui_app (function): Fixture which returns browser(driver) 
+        from 'BrowsersProvider' Class to UI App and then to Page Object models.
     """
-    login_page = git_hub_ui_app.LoginPage
+    login_page = git_hub_ui_app.login_page
     login_page.go_to().go_to_security_page()
 
     security_page_title = login_page.get_title()
@@ -154,9 +162,10 @@ def test_link_support_page(git_hub_ui_app):
     """
     Checking link to support page
     Args:
-        git_hub_ui_app (_type_): Fixture of 'ui_app' from conftest.py.
+        git_hub_ui_app (function): Fixture which returns browser(driver) 
+        from 'BrowsersProvider' Class to UI App and then to Page Object models.
     """
-    login_page = git_hub_ui_app.LoginPage
+    login_page = git_hub_ui_app.login_page
     login_page.go_to().go_to_github_support_page()
 
     support_page_title = login_page.get_title()

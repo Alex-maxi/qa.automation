@@ -8,6 +8,15 @@ from src.providers.service.browsers.browsers_library.edge_browser import EdgeBro
 
 
 class BrowsersProvider:
+    """
+    Browsers Provider class. Returns selected browser.
+
+    Raises:
+        NotImplementedError: If was typed incorrect or unsupported browser name.
+
+    Returns:
+        WebDriver: Return WebDriver depends of selected browser in CONFIG.
+    """
 
     BROWSER_MAPPER = {
         'chrome': ChromeBrowser,
@@ -17,15 +26,16 @@ class BrowsersProvider:
         'remote_ff': RemoteFFBrowser,
         'remote_edge': RemoteEdgeBrowser
     }
+
     @staticmethod
     def get_driver(browser_name):
         """
         browser_name -> 'chrome, ff, edge, remote_chrome, remote_ff, remote_edge 
         """
-
         browser = BrowsersProvider.BROWSER_MAPPER.get(browser_name)
         if browser is None:
             raise NotImplementedError(f"Browser name {browser_name} is not supported for UI tests. Please register it in BrowsersProvider class")
 
         driver = browser.get_driver()
         return driver
+    
